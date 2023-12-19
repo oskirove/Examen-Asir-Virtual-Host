@@ -1,0 +1,13 @@
+# Utilizamos la imagen más reciente de Alpine como base
+FROM alpine:latest
+
+# Especificamos el tipo de terminal que vamos a emular en nuestro contenedor
+ENV TERM linux
+
+# configuramos la imagen para que actualice los 
+# paquetes e instale el navegador de terminal (links en este caso)
+RUN apk update && apk add links
+
+# Establecemos el comando predeterminado que se ejecutará 
+# de manera automática al iniciar el contenedor
+CMD ["links"]
