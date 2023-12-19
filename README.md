@@ -35,3 +35,45 @@ Después, verificaremos que el contenedor funciona correctamente y, posteriormen
 
 > [!NOTE]
 > [Enlace al repositoio de Dockerhub](https://hub.docker.com/r/oskiroveasir/examen-asir)
+
+## Configuración de dos Virtualhost Diferenciados por el Puerto
+
+Agregamos al httpd.conf lo siguiente:
+
+```conf
+# Configuración del primer virtual host
+<VirtualHost *:80>
+    ServerName localhost
+    DocumentRoot /var/www/html/vh1
+    
+    # Definimos la ruta donde va a tener que 
+    # buscar la página que queremos mostrar
+    <Directory "/var/www/html/vh1">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+Listen 8000
+# Configuración del segundo virtual host
+<VirtualHost *:8000>
+    ServerName vhost2
+    DocumentRoot /var/www/html/vh2
+    # Definimos la ruta donde va a tener que 
+    # buscar la página que queremos mostrar
+    <Directory "/var/www/html/vh2">
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+Una vez configuremos los virtualhost definiremos lo siguiente:
+
+```conf
+<IfModule dir_module>
+    DirectoryIndex vh1.html vh2.html
+</IfModule>
+```
+
+![imagen de los virtualhost funcionando en diferentes puertos](virtualhost-nav)
