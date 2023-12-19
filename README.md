@@ -31,4 +31,7 @@ Como último paso **crearemos** el contendor utilizando el siguiente comando:
 
 Después, verificaremos que el contenedor funciona correctamente y, posteriormente, procederemos a subir nuestra imagen a nuestro repositorio de **Docker Hub**.
 
-![Imagen que comprueba el funcionamiento del contenedor Alpine](alpine-navegador)
+![Imagen que comprueba el funcionamiento del contenedor Alpine](alpineNavegador)
+
+> [!NOTE]
+> [Enlace al repositoio de Dockerhub](https://hub.docker.com/r/oskiroveasir/examen-asir)
