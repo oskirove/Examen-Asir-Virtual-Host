@@ -5,8 +5,24 @@ services:
     ports:
       - "80:80"
       - "8000:8000"
+    networks:
+      examen:
+        ipv4_address: 192.168.1.3
     volumes:
       - ./paginas:/var/www/html
       - ./conf:/usr/local/apache2/conf:rw
 
-      
+  cliente:
+    container_name: cliente
+    image: mi-alpine
+    platform: linux/arm64
+    # Asignamos un terminal al contenedor.
+    tty: true
+    # Mantenemos abierto el canal de entrada estándar.
+    stdin_open: true
+    networks:
+      examen:
+        ipv4_address: 192.168.1.2
+networks:
+  examen:
+    external: true
