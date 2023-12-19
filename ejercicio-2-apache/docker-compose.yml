@@ -8,3 +8,5 @@ services:
     volumes:
       - ./paginas:/var/www/html
       - ./conf:/usr/local/apache2/conf:rw
+
+      
